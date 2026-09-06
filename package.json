@@ -1,0 +1,13 @@
+{
+  "name": "insta-tips",
+  "version": "1.0.0",
+  "description": "Insta Tips App",
+  "scripts": {
+    "build": "mkdir -p dist && cp index.html dist/index.html"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0"
+  }
+}
