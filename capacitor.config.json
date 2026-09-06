@@ -1,0 +1,8 @@
+{
+  "appId": "com.sardarsunji.instatips",
+  "appName": "Insta Tips",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
