@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Insta Tips</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin-top: 8px;
+    }
+
+    .language {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .lang-btn {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .card button {
+      width: 100%;
+      background: #833ab4;
+      color: white;
+      margin-top: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      min-height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📸 Insta Tips</h1>
+  <p id="subtitle">Grow your Instagram organically</p>
+</header>
+
+<div class="language">
+  <button class="lang-btn" onclick="setLanguage('bn')">
+    🇧🇩 বাংলা
+  </button>
+
+  <button class="lang-btn" onclick="setLanguage('en')">
+    🇬🇧 English
+  </button>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <h2 id="captionTitle">✍️ Caption Ideas</h2>
+    <button onclick="showTip('caption')" id="captionBtn">
+      Get Caption
+    </button>
+  </div>
+
+  <div class="card">
+    <h2 id="hashtagTitle">#️⃣ Hashtag Tips</h2>
+    <button onclick="showTip('hashtag')" id="hashtagBtn">
+      Get Hashtags
+    </button>
+  </div>
+
+  <div class="card">
+    <h2 id="reelsTitle">🎬 Reels Ideas</h2>
+    <button onclick="showTip('reels')" id="reelsBtn">
+      Get Reels Idea
+    </button>
+  </div>
+
+  <div class="card">
+    <h2 id="growthTitle">📈 Growth Tips</h2>
+    <button onclick="showTip('growth')" id="growthBtn">
+      Get Growth Tip
+    </button>
+  </div>
+
+  <div class="card">
+    <h2 id="postingTitle">📅 Posting Tips</h2>
+    <button onclick="showTip('posting')" id="postingBtn">
+      Get Posting Tip
+    </button>
+  </div>
+
+  <div id="result">
+    👋 Welcome to Insta Tips!
+  </div>
+
+</div>
+
+<script>
+
+let language = "en";
+
+const data = {
+
+  en: {
+    caption: [
+      "✨ Be yourself, everyone else is already taken.",
+      "📸 Creating memories, one post at a time.",
+      "🌟 Small steps create big results."
+    ],
+
+    hashtag: [
+      "#instagram #instagood #reels #viral #explore",
+      "#contentcreator #socialmedia #growth #creator",
+      "#reelsinstagram #trending #photooftheday"
+    ],
+
+    reels: [
+      "🎬 Create a before vs after Reel.",
+      "🎬 Share 3 useful tips in 15 seconds.",
+      "🎬 Show your daily routine."
+    ],
+
+    growth: [
+      "📈 Post consistently and focus on useful content.",
+      "💬 Reply to genuine comments and engage with your audience.",
+      "🎯 Focus on a clear content niche."
+    ],
+
+    posting: [
+      "📅 Create a regular posting schedule.",
+      "⏰ Test different posting times to see when your audience is active.",
+      "📱 Use insights to understand which content performs best."
+    ]
+  },
+
+  bn: {
+    caption: [
+      "✨ নিজের মতো থাকুন, সেটাই আপনার শক্তি।",
+      "📸 প্রতিটি ছবির সঙ্গে একটি নতুন স্মৃতি।",
+      "🌟 ছোট ছোট চেষ্টা বড় ফল তৈরি করে।"
+    ],
+
+    hashtag: [
+      "#বাংলা #instagram #reels #viral #explore",
+      "#contentcreator #socialmedia #growth",
+      "#reels #trending #creator"
+    ],
+
+    reels: [
+      "🎬 Before এবং After ধরনের Reel তৈরি করুন।",
+      "🎬 ১৫ সেকেন্ডে ৩টি দরকারি টিপস দিন।",
+      "🎬 আপনার Daily Routine দেখান।"
+    ],
+
+    growth: [
+      "📈 নিয়মিত ভালো এবং উপকারী কনটেন্ট পোস্ট করুন।",
+      "💬 দর্শকদের মন্তব্যের উত্তর দিন।",
+      "🎯 একটি নির্দিষ্ট Content Niche বেছে নিন।"
+    ],
+
+    posting: [
+      "📅 নিয়মিত পোস্ট করার একটি সময়সূচি তৈরি করুন।",
+      "⏰ বিভিন্ন সময়ে পোস্ট করে ফলাফল পরীক্ষা করুন।",
+      "📱 কোন কনটেন্ট ভালো করছে তা Insights থেকে দেখুন।"
+    ]
+  }
+
+};
+
+
+function setLanguage(lang) {
+
+  language = lang;
+
+  if (lang === "bn") {
+
+    document.getElementById("subtitle").innerText =
+      "স্বাভাবিকভাবে Instagram Growth করুন";
+
+    document.getElementById("captionTitle").innerText =
+      "✍️ ক্যাপশন আইডিয়া";
+
+    document.getElementById("captionBtn").innerText =
+      "ক্যাপশন দেখুন";
+
+    document.getElementById("hashtagTitle").innerText =
+      "#️⃣ হ্যাশট্যাগ টিপস";
+
+    document.getElementById("hashtagBtn").innerText =
+      "হ্যাশট্যাগ দেখুন";
+
+    document.getElementById("reelsTitle").innerText =
+      "🎬 রিলস আইডিয়া";
+
+    document.getElementById("reelsBtn").innerText =
+      "রিলস আইডিয়া দেখুন";
+
+    document.getElementById("growthTitle").innerText =
+      "📈 গ্রোথ টিপস";
+
+    document.getElementById("growthBtn").innerText =
+      "গ্রোথ টিপস দেখুন";
+
+    document.getElementById("postingTitle").innerText =
+      "📅 পোস্টিং টিপস";
+
+    document.getElementById("postingBtn").innerText =
+      "পোস্টিং টিপস দেখুন";
+
+    document.getElementById("result").innerText =
+      "👋 Insta Tips-এ স্বাগতম!";
+
+  } else {
+
+    location.reload();
+
+  }
+
+}
+
+
+function showTip(type) {
+
+  const tips = data[language][type];
+
+  const random =
+    tips[Math.floor(Math.random() * tips.length)];
+
+  document.getElementById("result").innerText = random;
+
+}
+
+</script>
+
+</body>
+</html>
